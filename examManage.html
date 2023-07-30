@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <script type="text/javascript" src="js/jquery-3.7.0.min.js"></script>
+        <!-- <script type="text/javascript" src="js/examAPI.js"></script> -->
+        <!-- <script type="text/javascript" src="js/examFunction.js"></script> -->
+        <script type="text/javascript" src="js/examManageAPI.js"></script>
+        <script type="text/javascript" src="js/examManageFunction.js"></script>
+        <!-- <script type="text/javascript" src="js/commonFunction.js"></script> -->
+        <link rel="stylesheet" href="/css/main.css" />
+        <script type="text/javascript">
+            $(document).ready(function () {
+                getExamList();
+            });
+        </script>
+    </head>
+
+    <body class="wrapper flow">
+        getExamList()
+        <br /><br />
+        <div id="exam_table"></div>
+
+        <br />
+        <div id="put_exam_form">
+            <table id="put_exam_table" border="1">
+                <tr>
+                    <td>title (필수)</td>
+                    <td>
+                        <input
+                            type="text"
+                            id="put_exam_title"
+                            value=""
+                            onchange="makePutExamVariables()"
+                        />
+                    </td>
+                </tr>
+                <tr>
+                    <td>subtitle</td>
+                    <td>
+                        <div id="put_exam_subtitle"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>examId</td>
+                    <td>
+                        <div id="put_exam_examId"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>category (필수)</td>
+                    <td>
+                        <input
+                            type="text"
+                            id="put_exam_category"
+                            value=""
+                            onchange="makePutExamVariables()"
+                        />
+                    </td>
+                </tr>
+                <tr>
+                    <td>round</td>
+                    <td>
+                        <input
+                            type="text"
+                            id="put_exam_round"
+                            value=""
+                            onchange="makePutExamVariables()"
+                        />
+                    </td>
+                </tr>
+                <tr>
+                    <td>date</td>
+                    <td>
+                        <input
+                            type="text"
+                            id="put_exam_date"
+                            value=""
+                            onchange="makePutExamVariables()"
+                        />
+                    </td>
+                </tr>
+                <tr>
+                    <td>tags (공백없는 쉼표로 구분 입력)</td>
+                    <td>
+                        <input
+                            type="text"
+                            id="put_exam_tags"
+                            value=""
+                            onchange="makePutExamVariables()"
+                        />
+                    </td>
+                </tr>
+            </table>
+            <br />
+
+            <button id="put_exam_btn" onclick="putExam()">put</button>
+            <br />
+            github 올리기
+            <br />
+            title, subtitle 같으면 update, 다르면 create
+            <br />
+            (시험 양이 많아지면) getExamTitleList() 추가해서 selectbox 구현,
+            getExamList(title) 구현
+        </div>
+    </body>
+    <script type="text/javascript">
+        document
+            .getElementById("exam_table")
+            .addEventListener("click", onExamTableClick, false);
+    </script>
+</html>
