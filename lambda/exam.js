@@ -5,6 +5,7 @@ import {
 } from "@aws-sdk/client-dynamodb";
 import {
     PutCommand,
+    DeleteCommand,
     ScanCommand,
     DynamoDBDocumentClient,
 } from "@aws-sdk/lib-dynamodb";
@@ -91,6 +92,15 @@ export const handler = async (event) => {
         console.log(inputParam);
 
         const command = new PutCommand(inputParam);
+        const response = await docClient.send(command);
+
+        return response;
+    } else if (method == "DELETE" && path == "/deleteExam") {
+        inputParam.Key = {};
+        inputParam.Key.title = event["queryStringParameters"]["title"];
+        inputParam.Key.subtitle = event["queryStringParameters"]["subtitle"];
+
+        const command = new DeleteCommand(inputParam);
         const response = await docClient.send(command);
 
         return response;

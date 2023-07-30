@@ -52,8 +52,19 @@ function deleteExam() {
     var j = 0;
     var k = 0;
     for (var i = 0; i < examIds.length; i++) {
+        var examItem = document.querySelector(
+            "[data-exam-id='" + examIds[i] + "']"
+        );
+        var title = examItem.dataset.title;
+        var subtitle = examItem.dataset.subtitle;
+
         $.ajax({
-            url: examAPIUrl + "/deleteExam?exam_id=" + examIds[i],
+            url:
+                examAPIUrl +
+                "/deleteExam?title=" +
+                title +
+                "&subtitle=" +
+                subtitle,
             type: "DELETE",
             success: function (result) {
                 j++;
