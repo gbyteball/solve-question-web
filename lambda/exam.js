@@ -80,6 +80,8 @@ export const handler = async (event) => {
         const command = new ScanCommand(inputParam);
         const response = await docClient.send(command);
 
+        response.Items.sort(arrOrder("title"));
+
         return response;
     } else if (method == "POST" && path == "/putExam") {
         // console.log(event);
@@ -108,3 +110,15 @@ export const handler = async (event) => {
 
     return event;
 };
+
+function arrOrder(key) {
+    return function (a, b) {
+        if (a[key] > b[key]) {
+            return 1;
+        } else if (a[key] < b[key]) {
+            return -1;
+        }
+
+        return 0;
+    };
+}

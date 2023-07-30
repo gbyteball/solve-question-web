@@ -26,6 +26,10 @@ function putExam() {
     data.Item.tags = document.getElementById("put_exam_tags").value.split(",");
     // data.Item.tags = { ...tagArray };
 
+    if (data.Item.title == "" || data.Item.subtitle == "") {
+        alert("Error : Input form first.");
+        return;
+    }
     $.ajax({
         url: examAPIUrl + "/putExam",
         type: "POST",

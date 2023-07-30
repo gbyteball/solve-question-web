@@ -137,7 +137,9 @@ function onExamTableClick(event) {
     var date = event.target.dataset.date;
     var tags = event.target.dataset.tags;
 
-    fillPutExamForm(title, subtitle, examId, category, round, date, tags);
+    if (title && subtitle) {
+        fillPutExamForm(title, subtitle, examId, category, round, date, tags);
+    }
 }
 
 function fillPutExamForm(title, subtitle, examId, category, round, date, tags) {
@@ -148,4 +150,14 @@ function fillPutExamForm(title, subtitle, examId, category, round, date, tags) {
     document.getElementById("put_exam_round").value = round;
     document.getElementById("put_exam_date").value = date;
     document.getElementById("put_exam_tags").value = tags;
+}
+
+function clearExamForm() {
+    document.getElementById("put_exam_title").value = "";
+    document.getElementById("put_exam_subtitle").innerHTML = "";
+    document.getElementById("put_exam_examId").innerHTML = "";
+    document.getElementById("put_exam_category").value = "";
+    document.getElementById("put_exam_round").value = "";
+    document.getElementById("put_exam_date").value = "";
+    document.getElementById("put_exam_tags").value = "";
 }
