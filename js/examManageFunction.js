@@ -18,6 +18,10 @@ function createExamTable(jsonData) {
     let tr = $("<tr>");
 
     var th = $("<th>");
+    th.text("");
+    tr.append(th);
+
+    var th = $("<th>");
     th.text("title (PK)");
     tr.append(th);
 
@@ -75,6 +79,14 @@ function createExamTable(jsonData) {
             item["tags"] +
             "' " +
             ">";
+
+        var td = $(
+            "<td><input type='checkbox' name='checkedExams' value='" +
+                item["examId"] +
+                "'></td>"
+        );
+        tr.append(td);
+
         var td = $(tdPrefix + item["title"] + "</td>");
         tr.append(td);
 

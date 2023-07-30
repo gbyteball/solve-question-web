@@ -22,6 +22,9 @@
         <div id="exam_table"></div>
 
         <br />
+        <button id="delete_exam_btn" onclick="deleteExam()">delete</button>
+        <br />
+        <br />
         <div id="put_exam_form">
             <table id="put_exam_table" border="1">
                 <tr>
@@ -96,7 +99,9 @@
 
             <button id="put_exam_btn" onclick="putExam()">put</button>
             <br />
-            checkbox, deleteExam(title, subtitle) 구현
+
+            <br />
+            deleteExam(examId) API 구현
             <br />
             title, subtitle 같으면 update, 다르면 create
             <br /><br />

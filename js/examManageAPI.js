@@ -41,3 +41,36 @@ function putExam() {
         },
     });
 }
+
+function deleteExam() {
+    var examIds = $("input[type=checkbox]:checked")
+        .map(function (_, el) {
+            return $(el).val();
+        })
+        .get();
+
+    var j = 0;
+    var k = 0;
+    for (var i = 0; i < examIds.length; i++) {
+        $.ajax({
+            url: examAPIUrl + "/deleteExam?exam_id=" + examIds[i],
+            type: "DELETE",
+            success: function (result) {
+                j++;
+                k++;
+                if (k === examIds.length) {
+                    alert("Deleted " + j + " items.");
+                    getExamList();
+                }
+            },
+            error: function (error) {
+                alert("Error : examId '" + examIds[k] + "' delete fail.");
+                k++;
+                if (k === examIds.length) {
+                    alert("Deleted " + j + " items.");
+                    getExamList();
+                }
+            },
+        });
+    }
+}
