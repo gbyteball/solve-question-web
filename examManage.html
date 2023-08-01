@@ -7,20 +7,24 @@
         <!-- <script type="text/javascript" src="js/examFunction.js"></script> -->
         <script type="text/javascript" src="js/examManageAPI.js"></script>
         <script type="text/javascript" src="js/examManageFunction.js"></script>
+        <script
+            type="text/javascript"
+            src="js/commonManageFunction.js"
+        ></script>
         <!-- <script type="text/javascript" src="js/commonFunction.js"></script> -->
         <link rel="stylesheet" href="/css/main.css" />
         <script type="text/javascript">
             $(document).ready(function () {
                 getExamList();
+                makeAdminTabMenu();
             });
         </script>
     </head>
 
     <body class="wrapper flow">
-        getExamList()
-        <br /><br />
+        <div id="admin_tab_menu"></div>
+        [exam table]
         <div id="exam_table"></div>
-
         <br />
         <button id="delete_exam_btn" onclick="deleteExam()">delete</button>
         <br />
